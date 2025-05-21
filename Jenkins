@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     def userVar = null
-                    withCredentials([string(credentialsId: 'multibranch-secret-1', variable: 'CONJUR_SECRET')]) {
+                    withCredentials([conjurSecretCredential(credentialsId: 'secret', variable: 'CONJUR_SECRET')]) {
                         userVar = CONJUR_SECRET
                         echo "Inside withCredentials: ${CONJUR_SECRET}"
                     }
